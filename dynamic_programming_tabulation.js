@@ -97,9 +97,29 @@ const howSum = (targetSum, numbers) => {
 
 }
 
-console.log('How Sum', howSum(7, [2, 3]));
-console.log('How Sum', howSum(7, [5, 3, 4, 7]));
-console.log('How Sum', howSum(300, [7, 14]));
+var combinationSum = function(candidates, target) {
+    
+    let table = Array(target + 1).fill(null);
+    table[0] = [];
+
+     console.log('Table', table);
+
+    for (let i = 0; i <= target; i++) {
+        if (table[i] !== null) {
+            for (let candidate of candidates) {
+                table[i + candidate] = [...table[i], candidate];
+            }
+        }
+    }
+    return table[target];
+   
+};
+
+console.log('Candidate', howSum(7,  [2,3,6,7]));
+
+// console.log('How Sum', howSum(7, [2, 3]));
+// console.log('How Sum', howSum(7, [5, 3, 4, 7]));
+// console.log('How Sum', howSum(300, [7, 14]));
 
 /**
  * Write a function   `bestSum(targetSum, numbers)` that takes in a targetSum and an array of numbers
